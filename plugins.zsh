@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
-PLUGINS_DIR=${ZDOTDIR_PLUGINS}
+local PLUGINS_DIR=${ZDOTDIR_PLUGINS}
 
 clone_repo() {
-    REMOTE_REPO=$1
-    REPO_NAME=${${(@s:/:)REMOTE_REPO}[2]}
+    local REMOTE_REPO=$1
+    local REPO_NAME=${${(@s:/:)REMOTE_REPO}[2]}
     local REMOTE_URL="https://github.com/$REMOTE_REPO"
     local LOCAL_REPO="$PLUGINS_DIR/$REPO_NAME"
     git clone $REMOTE_URL $LOCAL_REPO 2> /dev/null
@@ -15,6 +15,9 @@ source $PLUGINS_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 clone_repo "zsh-users/zsh-syntax-highlighting"
 source $PLUGINS_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+clone_repo "zsh-users/zsh-history-substring-search"
+source $PLUGINS_DIR/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # Completion
 clone_repo "zsh-users/zsh-completions"

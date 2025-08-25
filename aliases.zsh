@@ -5,17 +5,23 @@ alias la="ls -al"
 alias ls="lsd --header"
 alias tree="lsd --tree"
 
+alias df="df -H"
+
+alias cp="cp -i"
+alias ln="ln -i"
+alias mv="mv -i"
+
 alias o="open ."
 alias publicip="dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com"
 alias privateip="ipconfig getifaddr en0"
 alias aseprite="/Users/namkhanhtran/programming/repo/aseprite/build/bin/aseprite"
 
-google() {
-    search=""
+function google {
+    local search=""
     echo "Googling: $@"
     for term in $@; do
         search="$search%20$term"
     done
     open "http://www.google.com/search?q=$search"
 }
-
+function up { cd $(eval printf '../'%.0s {1..$1}); }
